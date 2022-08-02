@@ -53,5 +53,48 @@ table {
 button {
   all: unset;
 }
+
+///////// Global configuration //////////////
+
+body {
+  width: 100%;
+  background-color: #F2F2F2;
+  font-family: 'Lexend Deca', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+h1 {
+  font-family: 'Playball', cursive;
+  font-size: 39px;
+  line-height: 49px;
+  text-align: center;
+  color: #FFFFFF;
+}
+h2 {
+  font-size: 22.976px;
+  line-height: 29px;
+  color: #126BA5;
+}
+h3 {
+  font-size: 17.976px;
+  line-height: 22px;
+  color: #666666;
+}
+h4 {
+  font-size: 19.976px;
+  line-height: 25px;
+  color: #666666;
+}
+h5 {
+  font-size: 15.976px;
+  line-height: 20px;
+  text-align: center;
+  color: #52B6FF;
+}
+h6 {
+  font-size: 12.976px;
+  line-height: 16px;
+  color: #666666;
+}
 `;
  
