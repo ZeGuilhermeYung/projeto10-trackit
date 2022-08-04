@@ -10,7 +10,7 @@ export default function Button ( {title, size} ) {
 
 const Wrapper = styled.button`
 width: ${props => (
-  (props.size === "large") ? "303px"
+  (props.size === "large") ? "100%"
   : (props.size === "small") ? "84px"
   : "40px")};
 height: ${props => (
@@ -21,6 +21,7 @@ border-radius: 5px;
 display: flex;
 align-items: center;
 justify-content: center;
+box-sizing: border-box;
 
 p {
   font-size: ${props => (
@@ -33,5 +34,4 @@ p {
   : "34px")};
   text-align: center;
   color: #FFFFFF;
-}
-`
+}`;

@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import logo from "../assets/img/trackit-logo.png"
+import logo from "../assets/img/trackit-logo.png";
+import AuthScreen from "./common/AuthScreen.js";
 import Button from "./common/Button";
 
 
@@ -26,18 +27,11 @@ export default function Register () {
         <input type="password" name="password" onChange={handleForm} value={form.password} placeholder="senha" />
         <input type="text" name="name" onChange={handleForm} value={form.name} placeholder="nome" />
         <input type="url" name="image" onChange={handleForm} value={form.image} placeholder="foto" />
+        <Button title="Cadastro" size="large" />
       </form>
       <Link to="/" >
-        <p>Já tem uma conta? Faça login!</p>
+        <h6>Já tem uma conta? Faça login!</h6>
       </Link>
-      <Button title="Cadastro" size="large" />
     </AuthScreen>
   );
 }
-
-const AuthScreen = styled.main`
-width: 100%;
-display: flex;
-flex-direction: column;
-align-items: center;
-`
