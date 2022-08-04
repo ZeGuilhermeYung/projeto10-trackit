@@ -71,28 +71,28 @@ h1 {
   color: #FFFFFF;
 }
 h2 {
-  font-size: 22.976px;
+  font-size: 23px;
   line-height: 29px;
   color: #126BA5;
 }
 h3 {
-  font-size: 17.976px;
+  font-size: 18px;
   line-height: 22px;
   color: #666666;
 }
 h4 {
-  font-size: 19.976px;
+  font-size: 20px;
   line-height: 25px;
   color: #666666;
 }
 h5 {
-  font-size: 15.976px;
+  font-size: 16px;
   line-height: 20px;
   text-align: center;
   color: #52B6FF;
 }
 h6 {
-  font-size: 12.976px;
+  font-size: 13px;
   line-height: 16px;
   color: #666666;
 }

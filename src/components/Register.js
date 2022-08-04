@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import logo from "../assets/img/trackit-logo.png"
+import Button from "./common/Button";
 
 
 export default function Register () {
@@ -28,7 +29,8 @@ export default function Register () {
       </form>
       <Link to="/" >
         <p>Já tem uma conta? Faça login!</p>
-      </Link> 
+      </Link>
+      <Button title="Cadastro" size="large" />
     </AuthScreen>
   );
 }
