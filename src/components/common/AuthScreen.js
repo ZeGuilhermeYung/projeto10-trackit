@@ -29,12 +29,17 @@ form {
 input {
   width: 100%;
   height: 45px;
+  font-size: 20px;
+  line-height: 25px;
   background-color: #FFFFFF;
   border: 1px solid #D5D5D5;
   border-radius: 5px;
   padding-left: 11px;
   margin-bottom: 6px;
   box-sizing: border-box;
+}
+input:focus-visible {
+ outline: none;
 }
 input::placeholder {
   font-size: 20px;

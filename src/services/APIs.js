@@ -12,5 +12,4 @@ function postLogin(body) {
   return promise;
 }
 
-
-export { postLogin, postRegister }
+export { userHeaders, postLogin, postRegister }

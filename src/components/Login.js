@@ -1,29 +1,48 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
 import { postLogin } from "../services/APIs.js";
 import logo from "../assets/img/trackit-logo.png";
-import AuthScreen from "./common/AuthScreen.js";
-import Button from "./common/Button.js";
-
+import { AuthScreen, Button } from "./common";
 
 export default function Login () {
+  const navigate = useNavigate();
+  const [disabled, setDisabled] = useState(false);
+  const authData = JSON.parse(localStorage.getItem("userData"));
   const [form, setForm] = useState({
     email: "",
     password: ""
   });
 
-  function handleForm(event) {
+  function handleInput (event) {
     setForm( {...form, [event.target.name]: event.target.value} );
-    console.log(form);
+  }
+
+  function handleForm (event) {
+    event.preventDefault();
+    setDisabled(true);
+
+    postLogin(form)
+      .catch((error) => {
+        alert(error.message);
+        setDisabled(false);
+      })
+      .then((answer) => {
+        localStorage.clear();
+        const token = answer.data.token;
+        const name = answer.data.name;
+        const image = answer.data.image;
+        const userAuth = JSON.stringify({ token: token, name: name, image: image });
+        localStorage.setItem("userData", userAuth);
+        navigate("/hoje");
+      });
   }
 
   return (
     <AuthScreen >
       <img src={logo} alt="logo do Track It" />
-      <form action="">
-        <input type="email" name="email" onChange={handleForm} value={form.email} placeholder="email" />
-        <input type="password" name="password" onChange={handleForm} value={form.password} placeholder="senha" />
+      <form onSubmit={handleForm} >
+        <input type="email" name="email" onChange={handleInput} value={form.email} placeholder="email" disabled={disabled} required />
+        <input type="password" name="password" onChange={handleInput} value={form.password} placeholder="senha" disabled={disabled} required />
         <Button title="Entrar" size="large" />
       </form>
       <Link to="/cadastro" >

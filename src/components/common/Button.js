@@ -18,6 +18,7 @@ height: ${props => (
   : "35px")};
 background-color: #52B6FF;
 border-radius: 5px;
+cursor: pointer;
 display: flex;
 align-items: center;
 justify-content: center;

@@ -13,8 +13,8 @@ export default function App () {
       <Routes >
         <Route path="/" element={<Login />} />
         <Route path="/cadastro" element={<Register />} />
-        {/* <Route path="/hoje" element={<Today />} />
-        <Route path="/habitos" element={<Habits />} />
+        <Route path="/hoje" element={<Today />} />
+        {/* <Route path="/habitos" element={<Habits />} />
         <Route path="/historico" element={<History />} /> */}
       </Routes>
       {/* <Footer /> */}
