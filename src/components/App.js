@@ -10,15 +10,13 @@ export default function App () {
     <>
       <GlobalStyle />
       <BrowserRouter >
-      {/* <Header /> */}
-      <Routes >
-        <Route path="/" element={<Login />} />
-        <Route path="/cadastro" element={<Register />} />
-        <Route path="/hoje" element={<Today />} />
-        {/* <Route path="/habitos" element={<Habits />} />
-        <Route path="/historico" element={<History />} /> */}
-      </Routes>
-      {/* <Footer /> */}
+        <Routes >
+          <Route path="/" element={<Login />} />
+          <Route path="/cadastro" element={<Register />} />
+          <Route path="/hoje" element={<Today />} />
+          {/* <Route path="/habitos" element={<Habits />} />
+          <Route path="/historico" element={<History />} /> */}
+        </Routes>
       </BrowserRouter>
     </>
   );

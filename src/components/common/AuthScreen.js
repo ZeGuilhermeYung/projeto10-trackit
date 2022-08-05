@@ -52,5 +52,4 @@ h6 {
   text-align: center;
   text-decoration-line: underline;
   color: #52B6FF;
-}
-`;
+}`;

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { postRegister } from "../services/APIs.js";
+import { registerUser } from "../services/APIs.js";
 import logo from "../assets/img/trackit-logo.png";
 import { AuthScreen, Button } from "./common";
 
@@ -21,7 +21,7 @@ export default function Register () {
   function handleSubmit (event) {
     event.preventDefault();
     setDisabled(true);
-    postRegister(form)
+    registerUser(form)
       .catch((error) => {
         alert(error.message);
         setDisabled(false);
@@ -32,7 +32,7 @@ export default function Register () {
   }
 
   return (
-    <AuthScreen >
+    <AuthScreen>
       <img src={logo} alt="logo do Track It" />
       <form onSubmit={handleSubmit} >
         <input type="email" name="email" onChange={handleInput} value={form.email} placeholder="email" disabled={disabled} required />

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { postLogin } from "../services/APIs.js";
+import { loginUser } from "../services/APIs.js";
 import logo from "../assets/img/trackit-logo.png";
 import { AuthScreen, Button } from "./common";
 
@@ -21,7 +21,7 @@ export default function Login () {
     event.preventDefault();
     setDisabled(true);
 
-    postLogin(form)
+    loginUser(form)
       .catch((error) => {
         alert(error.message);
         setDisabled(false);
@@ -38,7 +38,7 @@ export default function Login () {
   }
 
   return (
-    <AuthScreen >
+    <AuthScreen>
       <img src={logo} alt="logo do Track It" />
       <form onSubmit={handleSubmit} >
         <input type="email" name="email" onChange={handleInput} value={form.email} placeholder="email" disabled={disabled} required />
@@ -48,7 +48,6 @@ export default function Login () {
       <Link to="/cadastro" >
         <h6>Não tem uma conta? Cadastre-se!</h6>
       </Link> 
-      
     </AuthScreen>
   );
 }
