@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import GlobalStyle from "./GlobalStyle";
 import Login from "./Login";
 import Register from "./Register";
+import Today from "./common/Today";
 
 export default function App () {
   return (

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { postLogin } from "../services/APIs.js";
 import logo from "../assets/img/trackit-logo.png";
 import { AuthScreen, Button } from "./common";
@@ -7,7 +7,7 @@ import { AuthScreen, Button } from "./common";
 export default function Login () {
   const navigate = useNavigate();
   const [disabled, setDisabled] = useState(false);
-  const authData = JSON.parse(localStorage.getItem("userData"));
+  //const authData = JSON.parse(localStorage.getItem("userData"));
   const [form, setForm] = useState({
     email: "",
     password: ""
@@ -17,7 +17,7 @@ export default function Login () {
     setForm( {...form, [event.target.name]: event.target.value} );
   }
 
-  function handleForm (event) {
+  function handleSubmit (event) {
     event.preventDefault();
     setDisabled(true);
 
@@ -40,7 +40,7 @@ export default function Login () {
   return (
     <AuthScreen >
       <img src={logo} alt="logo do Track It" />
-      <form onSubmit={handleForm} >
+      <form onSubmit={handleSubmit} >
         <input type="email" name="email" onChange={handleInput} value={form.email} placeholder="email" disabled={disabled} required />
         <input type="password" name="password" onChange={handleInput} value={form.password} placeholder="senha" disabled={disabled} required />
         <Button title="Entrar" size="large" />
