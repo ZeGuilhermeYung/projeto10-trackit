@@ -26,11 +26,11 @@ export default function Login () {
         alert(error.message);
         setDisabled(false);
       })
-      .then((answer) => {
+      .then((userInfo) => {
         localStorage.clear();
-        const token = answer.data.token;
-        const name = answer.data.name;
-        const image = answer.data.image;
+        const token = userInfo.data.token;
+        const name = userInfo.data.name;
+        const image = userInfo.data.image;
         const userAuth = JSON.stringify({ token: token, name: name, image: image });
         localStorage.setItem("userData", userAuth);
         navigate("/hoje");

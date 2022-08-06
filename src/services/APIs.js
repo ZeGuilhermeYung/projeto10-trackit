@@ -1,6 +1,6 @@
 import axios from "axios";
 
-function userHeaders() {
+function userHeaders () {
   const authToken = JSON.parse(localStorage.getItem("userData"));
   const userToken = {
     headers: {
@@ -12,14 +12,20 @@ function userHeaders() {
 
 const urlAPI = 'https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit';
 
-function registerUser(body) {
+function registerUser (body) {
   const promise = axios.post(`${urlAPI}/auth/sign-up`, body);
   return promise;
 }
 
-function loginUser(body) {
+function loginUser (body) {
   const promise = axios.post(`${urlAPI}/auth/login`, body);
   return promise;
 }
 
-export { userHeaders, loginUser, registerUser }
+function getTodayHabits () {
+  const userToken = userHeaders();
+  const promise = axios.get(`${urlAPI}/habits/today`, userToken);
+  return promise;
+}
+
+export { userHeaders, loginUser, registerUser, getTodayHabits }
