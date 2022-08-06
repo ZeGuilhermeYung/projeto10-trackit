@@ -1,12 +1,14 @@
 import styled from "styled-components";
 
-export default function Top ( {name, image} ) {
+export default function Top () {
+  const authData = JSON.parse(localStorage.getItem("userData"));
+
   return (
-    <Header name={name} image={image} >
+    <Header>
       <h1>TrackIt</h1>
       <div>
-        <h6>Olá,<br/>{name}!</h6>
-        <img src={image} alt="" />
+        <h6>Olá,<br/>{authData.name}!</h6>
+        <img src={authData.image} alt="" />
       </div>
     </Header>
   );
@@ -40,4 +42,5 @@ div img {
 }
 div h6 {
   color: #FFFFFF;
+  text-align: center;
 }`;

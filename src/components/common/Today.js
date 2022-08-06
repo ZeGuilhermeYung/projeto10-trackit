@@ -6,14 +6,14 @@ import Top from "./Top";
 
 function TodayHabit ( {id, name, done, currentSequence, highestSequence} ) {
   return (
-    <TodayHabitDiv id={id} >
+    <div id={id} >
       <div>
         <h4>{name}</h4>
         <h6>Sequência atual: {currentSequence} dias</h6>
         <h6>Seu recorde: {highestSequence} dias</h6>
       </div>
       <ion-icon name="checkbox"></ion-icon>
-    </TodayHabitDiv>
+    </div>
   );
 }
 
@@ -50,7 +50,7 @@ export default function Today () {
           <h3>{statusHabits}</h3>
         </header>
         <main>
-        {(todayHabits.length === 0) ? <h2>Carregando...</h2>
+        {todayHabits.length === 0 ? <h2>Carregando...</h2>
             : todayHabits.map((habit, index) =>
             <TodayHabit
               key={index}
