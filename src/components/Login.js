@@ -34,7 +34,6 @@ export default function Login () {
       });
   }
 
-  
   return (
     <>
       {authData ? <Navigate to="/hoje" />

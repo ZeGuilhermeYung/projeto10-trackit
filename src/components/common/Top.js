@@ -39,6 +39,7 @@ div img {
   width: 51px;
   height: 51px;
   border-radius: 50%;
+  object-fit: cover;
 }
 div h6 {
   color: #FFFFFF;
