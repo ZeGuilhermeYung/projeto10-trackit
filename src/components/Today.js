@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import dayjs from "dayjs";
 import { getTodayHabits } from "../services/APIs";
+import { Icon } from "./common";
+
 
 function TodayHabit ( {id, name, done, currentSequence, highestSequence} ) {
   return (
@@ -12,7 +14,7 @@ function TodayHabit ( {id, name, done, currentSequence, highestSequence} ) {
           <h6>Seu recorde: {highestSequence} dias</h6>
         </div>
       </div>
-      <ion-icon name="checkbox"></ion-icon>
+      <Icon name="checkbox" size="large" />
     </div>
   );
 }

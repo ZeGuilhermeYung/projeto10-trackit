@@ -40,8 +40,7 @@ main > div > div {
   flex-direction: column;
   justify-content: space-between;
 }
-main > div > ion-icon {
-  font-size: 69px;
-  color: #EBEBEB;
+main ul {
+  display: flex;
 }
 `;

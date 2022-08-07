@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import styled from "styled-components";
 import { getHabits, postNewHabit } from "../../services/APIs";
-import { Button } from "../common";
+import { Button, SelectDay } from "../common";
 import Habit from "./Habit";
 
 function Weekday ( {weekdayNum, name, weekdays, setWeekdays} ) {
@@ -24,16 +23,9 @@ function Weekday ( {weekdayNum, name, weekdays, setWeekdays} ) {
     }
   }
   return (
-    <Li selected={selected} onClick={checkWeekdays} >
-      {name}
-    </Li>
+    <SelectDay selected={selected} name={name} clickFunction={checkWeekdays} />
   );
 }
-const Li = styled.li`
-background-color: ${props => (
-  props.selected ? "red"
-  : "blue")};
-`
 
 export default function Habits () {
   const [allHabits, setAllHabits] = useState([]);
