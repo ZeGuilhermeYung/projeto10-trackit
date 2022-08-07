@@ -28,4 +28,10 @@ function getTodayHabits () {
   return promise;
 }
 
-export { userHeaders, loginUser, registerUser, getTodayHabits }
+function getHabits () {
+  const userToken = userHeaders();
+  const promise = axios.get(`${urlAPI}/habits`, userToken);
+  return promise;
+}
+
+export { userHeaders, loginUser, registerUser, getTodayHabits, getHabits }

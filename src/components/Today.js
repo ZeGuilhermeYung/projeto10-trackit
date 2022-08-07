@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import dayjs from "dayjs";
 import styled from "styled-components";
-import { getTodayHabits } from "../../services/APIs";
-import Top from "./Top";
+import { getTodayHabits } from "../services/APIs";
+import Top from "./common/Top";
 
 function TodayHabit ( {id, name, done, currentSequence, highestSequence} ) {
   return (
@@ -18,7 +18,7 @@ function TodayHabit ( {id, name, done, currentSequence, highestSequence} ) {
 }
 
 export default function Today () {
-  require("../../../node_modules/dayjs/locale/pt-br.js");
+  require("dayjs/locale/pt-br");
 
   const [todayHabits, setTodayHabits] = useState([]);
   const [statusHabits, setStatusHabits] = useState("");

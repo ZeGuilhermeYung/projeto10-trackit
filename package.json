@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "antd": "^4.22.3",
     "axios": "^0.27.2",
     "dayjs": "^1.11.4",
     "react": "^17.0.2",

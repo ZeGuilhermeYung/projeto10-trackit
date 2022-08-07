@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-export default function Button ( {title, size, disabled} ) {
+export default function Button ( {title, size, disabled, clickFunction} ) {
   return (
-    <Wrapper title={title} size={size} disabled={disabled} >
+    <Wrapper title={title} size={size} onClick={clickFunction} disabled={disabled} >
       <p>{title}</p>
     </Wrapper>
   );
@@ -32,7 +32,7 @@ p {
   line-height: ${props => (
   (props.size === "large") ? "26px"
   : (props.size === "small") ? "20px"
-  : "34px")};
+  : "27px")};
   text-align: center;
   color: #FFFFFF;
 }`;
