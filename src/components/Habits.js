@@ -35,22 +35,71 @@ background-color: ${props => (
   : "blue")};
 `
 
-// function WeekdayHabit ( {} )
+function WeekdayHabit ( {name, selected} ) {
+  return (
+    <Li2 selected={selected} >
+      {name}
+    </Li2>
+  );
+}
+
+const Li2 = styled.li`
+background-color: ${props => (
+  props.selected ? "red"
+  : "blue")};
+`
 
 function Habit ( {id, name, days, setAddHabit, setDeleteHabit} ) {
+  const [weekdayHabit, setWeekdayHabit] = useState([
+    {
+      name: "D",
+      selected:false
+    },
+    {
+      name: "S",
+      selected:false
+    },
+    {
+      name: "T",
+      selected:false
+    },
+    {
+      name: "Q",
+      selected:false
+    },
+    {
+      name: "Q",
+      selected:false
+    },
+    {
+      name: "S",
+      selected:false
+    },
+    {
+      name: "S",
+      selected:false
+    }
+  ]);
+
+  useEffect(() => {
+    const arrayaux = [...weekdayHabit];
+    days.map(weekdayOrder => arrayaux[weekdayOrder - 1].selected = true);
+    setWeekdayHabit(arrayaux);
+  },[])
+
   return (
     <div id={id} >
       <div>
         <h4>{name}</h4>
       </div>
-      {/* <ul>
-        {["D","S","T","Q","Q","S","S"].map((weekday, index) =>
+      <ul>
+        {weekdayHabit.map((weekday, index) =>
           <WeekdayHabit
             key={index}
-            selected={false}
-            name={weekday} />
-        ).filter()}
-      </ul> */}
+            selected={weekday.selected}
+            name={weekday.name} />
+         )}
+      </ul>
     </div>
   );
 }
@@ -138,8 +187,7 @@ export default function Habits () {
             </form>
             : null}
           {alertHabits}
-          {allHabits.length === 0 ? <h2>Carregando...</h2>
-              : allHabits.map((habit, index) =>
+          {allHabits.map((habit, index) =>
               <Habit
                 key={index}
                 id={habit.id}
