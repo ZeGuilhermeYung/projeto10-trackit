@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { getHabits } from "../services/APIs";
+import { getHabits, postNewHabit } from "../services/APIs";
 import Top from "./common/Top";
 import { Button } from "./common";
 
@@ -24,11 +24,18 @@ function Weekday ( {weekdayNum, name, weekdays, setWeekdays} ) {
     }
   }
   return (
-    <li selected={selected} onClick={checkWeekdays} >
+    <Li selected={selected} onClick={checkWeekdays} >
       {name}
-    </li>
+    </Li>
   );
 }
+const Li = styled.li`
+background-color: ${props => (
+  props.selected ? "red"
+  : "blue")};
+`
+
+// function WeekdayHabit ( {} )
 
 function Habit ( {id, name, days, setAddHabit, setDeleteHabit} ) {
   return (
@@ -36,7 +43,14 @@ function Habit ( {id, name, days, setAddHabit, setDeleteHabit} ) {
       <div>
         <h4>{name}</h4>
       </div>
-      <ion-icon name="checkbox"></ion-icon>
+      {/* <ul>
+        {["D","S","T","Q","Q","S","S"].map((weekday, index) =>
+          <WeekdayHabit
+            key={index}
+            selected={false}
+            name={weekday} />
+        ).filter()}
+      </ul> */}
     </div>
   );
 }
@@ -50,7 +64,9 @@ export default function Habits () {
   const [disabled, setDisabled] = useState(false);
   const [newHabitName, setNewHabitName] = useState("");
   const [alertHabits, setAlertHabits] = useState("");
-  const [weekdays, setWeekdays] = useState([]);
+  const [weekdays, setWeekdays] = useState([
+ 
+  ]);
 
   useEffect(() => {
 		getHabits()
@@ -60,7 +76,7 @@ export default function Habits () {
       .then((habits) => {
         setAllHabits(habits.data);
         setDeleteHabit(false);
-        habits.length === 0 ?
+        habits.data.length === 0 ?
         setAlertHabits(<h3>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</h3>)
           : setAlertHabits(null);
       });
@@ -68,6 +84,31 @@ export default function Habits () {
 
   function newHabit () {
     setAddHabit(true);
+  }
+
+  function handleSubmit (event) {
+    event.preventDefault();
+    if (weekdays.length === 0) {
+      alert("Selecione pelo menos um dia da semana");
+    } else {
+      setDisabled(true);
+    const newHabit = {
+      name: newHabitName,
+      days: weekdays
+    }
+    console.log(newHabit);
+    postNewHabit(newHabit)
+      .catch((error) => {
+        alert(error.message);
+        setDisabled(false);
+      })
+      .then(() => {
+        setAddHabit(false);
+        setDisabled(false);
+        setNewHabitName("");
+        setWeekdays([]);
+      });
+    }
   }
 
   return (
@@ -80,8 +121,8 @@ export default function Habits () {
         </header>
         <main>
           {addHabit ?
-            <form>
-              <input type="text" name="newHabit" onChange={(event) => {setNewHabitName(event.target.value)}} value={newHabitName} />
+            <form onSubmit={handleSubmit} >
+              <input type="text" name="newHabit" onChange={(event) => {setNewHabitName(event.target.value)}} value={newHabitName} required/>
               <ul>
                 {["D","S","T","Q","Q","S","S"].map((weekday, index) =>
                   <Weekday
@@ -92,7 +133,7 @@ export default function Habits () {
                     setWeekdays={setWeekdays} />
                 )}
               </ul>
-              <h6>Cancelar</h6>
+              <h6 onClick={() => (setAddHabit(false))}>Cancelar</h6>
               <Button title="Salvar" size="small" disabled={disabled} />
             </form>
             : null}

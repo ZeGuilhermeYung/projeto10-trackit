@@ -34,4 +34,10 @@ function getHabits () {
   return promise;
 }
 
-export { userHeaders, loginUser, registerUser, getTodayHabits, getHabits }
+function postNewHabit (body) {
+  const userToken = userHeaders();
+  const promise = axios.post(`${urlAPI}/habits`, body, userToken);
+  return promise;
+}
+
+export { userHeaders, loginUser, registerUser, getTodayHabits, getHabits, postNewHabit }
