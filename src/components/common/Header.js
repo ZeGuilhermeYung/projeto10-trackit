@@ -1,20 +1,18 @@
 import styled from "styled-components";
 
-export default function Top () {
-  const authData = JSON.parse(localStorage.getItem("userData"));
-
+export default function Header ( {name, image} ) {
   return (
-    <Header>
+    <Top>
       <h1>TrackIt</h1>
       <div>
-        <h6>Olá,<br/>{authData.name}!</h6>
-        <img src={authData.image} alt="" />
+        <h6>Olá,<br/>{name}!</h6>
+        <img src={image} alt="" />
       </div>
-    </Header>
+    </Top>
   );
 }
 
-const Header = styled.header`
+const Top = styled.header`
 width: 100%;
 height: 70px;
 background-color: #126BA5;
