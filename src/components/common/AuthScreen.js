@@ -10,6 +10,8 @@ export default function AuthScreen ( {children} ) {
 
 const Main = styled.main`
 width: 100%;
+height: 100vh;
+background-color: #FFFFFF;
 display: flex;
 flex-direction: column;
 align-items: center;
