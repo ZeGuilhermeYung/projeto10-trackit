@@ -83,7 +83,7 @@ function Habit ( {habitId, name, days, setDeleteHabit} ) {
 
   useEffect(() => {
     const arrayaux = [...weekdayHabit];
-    days.map(weekdayOrder => arrayaux[weekdayOrder - 1].selected = true);
+    days.map(weekdayOrder => arrayaux[weekdayOrder].selected = true);
     setWeekdayHabit(arrayaux);
   },[])
 
@@ -94,7 +94,6 @@ function Habit ( {habitId, name, days, setDeleteHabit} ) {
           setDeleteHabit(true);
         });
     }
-    console.log(habitId);
   }
 
   return (
@@ -156,7 +155,6 @@ export default function Habits () {
       name: newHabitName,
       days: weekdays
     }
-    console.log(newHabit);
     postNewHabit(newHabit)
       .catch((error) => {
         alert(error.message);
@@ -187,7 +185,7 @@ export default function Habits () {
                 {["D","S","T","Q","Q","S","S"].map((weekday, index) =>
                   <Weekday
                     key={index}
-                    weekdayNum={index + 1}
+                    weekdayNum={index}
                     name={weekday}
                     weekdays={weekdays}
                     setWeekdays={setWeekdays} />

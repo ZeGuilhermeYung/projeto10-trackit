@@ -18,7 +18,7 @@ function TodayHabit ( {id, name, done, currentSequence, highestSequence} ) {
 }
 
 export default function Today () {
-  //require("dayjs/locale/pt-br");
+  require("dayjs/locale/pt-br");
 
   const [todayHabits, setTodayHabits] = useState([]);
   const [statusHabits, setStatusHabits] = useState("");
@@ -34,7 +34,7 @@ export default function Today () {
         console.log(habits);
         setTodayHabits(habits.data);
         setDoneHabits(habits.data.filter(habit => habit.done));
-        setProgressHabits(Math.round((doneHabits.length / habits.data.length) * 100));
+        setProgressHabits(Math.round((habits.data.filter(habit => habit.done).length / habits.data.length) * 100));
         doneHabits.length === 0 ?
           setStatusHabits("Nenhum hábito concluído ainda")
           : setStatusHabits(`${progressHabits}% dos hábitos concluídos`);
