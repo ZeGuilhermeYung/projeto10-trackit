@@ -40,4 +40,10 @@ function postNewHabit (body) {
   return promise;
 }
 
-export { userHeaders, loginUser, registerUser, getTodayHabits, getHabits, postNewHabit }
+function deleteHabit(habitId) {
+  const userToken = userHeaders();
+  const promise = axios.delete(`${urlAPI}/habits/${habitId}`, userToken);
+  return promise;
+}
+
+export { userHeaders, loginUser, registerUser, getTodayHabits, getHabits, postNewHabit, deleteHabit }

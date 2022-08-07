@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { getHabits, postNewHabit } from "../services/APIs";
+import { deleteHabit, getHabits, postNewHabit } from "../services/APIs";
 import Top from "./common/Top";
 import { Button } from "./common";
 
@@ -49,7 +49,7 @@ background-color: ${props => (
   : "blue")};
 `
 
-function Habit ( {id, name, days, setAddHabit, setDeleteHabit} ) {
+function Habit ( {habitId, name, days, setDeleteHabit} ) {
   const [weekdayHabit, setWeekdayHabit] = useState([
     {
       name: "D",
@@ -87,8 +87,18 @@ function Habit ( {id, name, days, setAddHabit, setDeleteHabit} ) {
     setWeekdayHabit(arrayaux);
   },[])
 
+  function confirmDeleteHabit() {
+    if (window.confirm('Deseja excluir este hábito?')) {
+      deleteHabit(habitId)
+        .then(() => {
+          setDeleteHabit(true);
+        });
+    }
+    console.log(habitId);
+  }
+
   return (
-    <div id={id} >
+    <div id={habitId} >
       <div>
         <h4>{name}</h4>
       </div>
@@ -100,6 +110,7 @@ function Habit ( {id, name, days, setAddHabit, setDeleteHabit} ) {
             name={weekday.name} />
          )}
       </ul>
+      <ion-icon name="trash-outline" onClick={confirmDeleteHabit}></ion-icon>
     </div>
   );
 }
@@ -190,10 +201,9 @@ export default function Habits () {
           {allHabits.map((habit, index) =>
               <Habit
                 key={index}
-                id={habit.id}
+                habitId={habit.id}
                 name={habit.name}
                 days={habit.days}
-                setAddHabit={setAddHabit}
                 setDeleteHabit={setDeleteHabit} />)}
         </main>
       </HabitsSection>
