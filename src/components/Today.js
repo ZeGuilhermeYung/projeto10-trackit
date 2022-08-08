@@ -25,7 +25,6 @@ export default function Today () {
   const [todayHabits, setTodayHabits] = useState([]);
   const [statusHabits, setStatusHabits] = useState("");
   const [doneHabits, setDoneHabits] = useState([]);
-  const [progressHabits, setProgressHabits] = useState(0);
 
   useEffect(() => {
 		getTodayHabits()

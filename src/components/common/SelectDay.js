@@ -18,7 +18,8 @@ border: 1px solid ${props => (
   props.selected ? "#CFCFCF"
   : "#D5D5D5")};
 border-radius: 5px;
-margin-left: 4px;
+margin-right: 4px;
+cursor: pointer;
 display: flex;
 align-items: center;
 justify-content: center;

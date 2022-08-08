@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import GlobalStyle from "./GlobalStyle";
 import Login from "./Login";
-import PrivatePage from "./PrivatePages/PrivatePage";
+import PrivatePage from "./private/PrivatePage";
 import Register from "./Register";
 import Today from "./Today";
 import Habits from "./Habits/Habits";

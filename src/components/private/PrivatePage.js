@@ -1,6 +1,7 @@
 import { Navigate } from "react-router-dom";
 import styled from "styled-components";
-import Header from "../common/Header";
+import Header from "./Header";
+import Footer from "./Footer";
 
 export default function PrivatePage({ children }) {
   const authData = JSON.parse(localStorage.getItem("userData"));
@@ -10,7 +11,7 @@ export default function PrivatePage({ children }) {
       <Private>
         <Header name={authData.name} image={authData.image} />
           {children}
-        {/* <Footer /> */}
+        <Footer />
       </Private>
     )
   } else {
@@ -28,7 +29,7 @@ main > div {
   background-color: #FFFFFF;
   padding: 13px 13px 13px 15px;
   border-radius: 5px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   box-sizing: border-box;
   display: flex;
   align-items: center;

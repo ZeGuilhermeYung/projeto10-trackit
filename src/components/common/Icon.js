@@ -9,13 +9,15 @@ export default function Icon ( {name, size, clickFunction} ) {
 }
 
 const Wrapper = styled.div`
-
+cursor: pointer;
+ion-icon {
 font-size: ${props => (
-(props.size === "large") ? "69px"
-: "15px"
+  (props.size === "large") ? "69px"
+  : "15px"
 )};
 color: ${props => (
-(props.size === "large") ? "#EBEBEB"
-: "#666666"
+  (props.size === "large") ? "#EBEBEB"
+  : "#666666"
 )};
+}
 `;
