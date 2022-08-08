@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getHabits, postNewHabit } from "../../services/APIs";
-import { Button, Input, Loading, SelectDay } from "../common";
+import { Button, Input, Loading, SelectDay, SubHeader } from "../common";
 import Habit from "./Habit";
 
 function Weekday ( {weekdayNum, name, weekdays, setWeekdays} ) {
@@ -76,10 +76,12 @@ export default function Habits () {
 
   return (
     <section>
-      <header>
-        <h2>Meus hábitos</h2>
-        <Button title="+" size="add" clickFunction={() => {setAddHabit(true)}} disabled={disabled} />
-      </header>
+      <SubHeader>
+        <div className="habits-header" >
+          <h2>Meus hábitos</h2>
+          <Button title="+" size="add" clickFunction={() => {setAddHabit(true)}} disabled={disabled} />
+        </div>
+      </SubHeader>
       <main>
         {addHabit ?
           <form onSubmit={handleSubmit} >

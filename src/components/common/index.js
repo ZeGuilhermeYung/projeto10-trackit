@@ -4,5 +4,6 @@ import Input from "./Input";
 import Icon from "./Icon";
 import SelectDay from "./SelectDay";
 import Loading from "./Loading";
+import SubHeader from "./SubHeader";
 
-export {AuthScreen, Button, Input, Icon, SelectDay, Loading};
+export {AuthScreen, Button, Input, Icon, SelectDay, Loading, SubHeader};

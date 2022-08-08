@@ -35,7 +35,7 @@ export default function Footer () {
   );
 }
 
-const Bottom = styled.header`
+const Bottom = styled.footer`
 width: 100%;
 height: 70px;
 background-color: #FFFFFF;

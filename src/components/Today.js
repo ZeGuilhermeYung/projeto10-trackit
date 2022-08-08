@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import UserContext from "../context/UserContext";
 import dayjs from "dayjs";
 import { checkHabit, getTodayHabits, uncheckHabit } from "../services/APIs";
-import { Icon } from "./common";
+import { Icon, SubHeader } from "./common";
 
 function TodayHabit ( {habitId, name, done, currentSequence, highestSequence, setChangeChecked} ) {
 
@@ -64,10 +64,12 @@ export default function Today () {
   
   return (
     <section>
-      <header>
-        <h2>{dayjs().locale("pt-br").format("dddd")}, {dayjs().format("DD/MM")}</h2>
-        <h3>{statusHabits}</h3>
-      </header>
+      <SubHeader>
+        <div className="today-header">
+          <h2>{dayjs().locale("pt-br").format("dddd")}, {dayjs().format("DD/MM")}</h2>
+          <h3>{statusHabits}</h3>
+        </div>
+      </SubHeader>
       <main>
       {todayHabits.length === 0 ? <h2>Carregando...</h2>
           : todayHabits.map((habit, index) =>
