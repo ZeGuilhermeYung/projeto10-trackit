@@ -1,40 +1,10 @@
 import { useContext, useEffect, useState } from "react";
-import UserContext from "../context/UserContext";
+import UserContext from "../../context/UserContext";
 import dayjs from "dayjs";
-import { checkHabit, getTodayHabits, uncheckHabit } from "../services/APIs";
-import { Icon, SubHeader } from "./common";
+import { getTodayHabits } from "../../services/APIs";
+import TodayHabit from "./TodayHabit";
+import { SubHeader } from "../common";
 
-function TodayHabit ( {habitId, name, done, currentSequence, highestSequence, setChangeChecked} ) {
-
-  function checkDoneHabit () {
-    !done ?  checkHabit(habitId)
-    .catch((error) => {
-      alert(error.message);
-    })
-    .then(() => {
-      setChangeChecked(true);
-    })
-    : uncheckHabit(habitId)
-    .catch((error) => {
-        alert(error.message);
-    })
-    .then(() => {
-      setChangeChecked(true);
-    });
-  }
-  return (
-    <div id={habitId} >
-      <div>
-        <h4>{name}</h4>
-        <div>
-          <h6>Sequência atual: {currentSequence} dias</h6>
-          <h6>Seu recorde: {highestSequence} dias</h6>
-        </div>
-      </div>
-      <Icon name="checkbox" size="large" done={done} clickFunction={checkDoneHabit} />
-    </div>
-  );
-}
 
 export default function Today () {
   require("dayjs/locale/pt-br");

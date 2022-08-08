@@ -5,7 +5,7 @@ import UserContext from "../context/UserContext";
 import Login from "./Login";
 import PrivatePage from "./private/PrivatePage";
 import Register from "./Register";
-import Today from "./Today";
+import Today from "./Today/Today";
 import Habits from "./Habits/Habits";
 
 export default function App () {
