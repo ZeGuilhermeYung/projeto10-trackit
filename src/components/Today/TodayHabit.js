@@ -1,12 +1,9 @@
-import { useContext, useEffect, useState } from "react";
-import UserContext from "../../context/UserContext";
 import { checkHabit, uncheckHabit } from "../../services/APIs";
 import { Icon } from "../common";
 import styled from "styled-components";
 
 export default function TodayHabit ( {habitId, name, done, currentSequence, highestSequence, setChangeChecked} ) {
 
-  //function compare
   function checkDoneHabit () {
     !done ?  checkHabit(habitId)
     .catch((error) => {
@@ -24,7 +21,7 @@ export default function TodayHabit ( {habitId, name, done, currentSequence, high
     });
   }
   return (
-    <Div id={habitId} actualDone={done} >
+    <Div id={habitId} actualDone={done} current={currentSequence} record={highestSequence} >
       <div>
         <h4>{name}</h4>
         <div>
@@ -53,6 +50,11 @@ const Div = styled.div`
 .actual em {
   color: ${props => (
     (props.actualDone) ? "#8FC549"
+    : "#666666")};
+}
+.record em {
+  color: ${props => (
+    (props.current === props.record && props.record !== 0) ? "#8FC549"
     : "#666666")};
 }
 `;
