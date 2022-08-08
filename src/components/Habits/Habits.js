@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getHabits, postNewHabit } from "../../services/APIs";
-import { Button, SelectDay } from "../common";
+import { Button, Loading, SelectDay } from "../common";
 import Habit from "./Habit";
 
 function Weekday ( {weekdayNum, name, weekdays, setWeekdays} ) {
@@ -95,7 +95,7 @@ export default function Habits () {
               )}
             </ul>
             <h6 onClick={() => (setAddHabit(false))}>Cancelar</h6>
-            <Button title="Salvar" size="small" disabled={disabled} />
+            {disabled ? <Loading size="small" /> : <Button title="Salvar" size="small" disabled={disabled} />}
           </form>
           : null}
         {alertHabits}

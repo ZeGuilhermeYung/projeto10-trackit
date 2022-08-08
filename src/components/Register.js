@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { registerUser } from "../services/APIs.js";
 import logo from "../assets/img/trackit-logo.png";
-import { AuthScreen, Button } from "./common";
+import { AuthScreen, Button, Loading } from "./common";
 
 export default function Register () {
   const navigate = useNavigate();
@@ -39,7 +39,7 @@ export default function Register () {
         <input type="password" name="password" onChange={handleInput} value={form.password} placeholder="senha" disabled={disabled} required />
         <input type="text" name="name" onChange={handleInput} value={form.name} placeholder="nome" disabled={disabled} required />
         <input type="url" name="image" onChange={handleInput} value={form.image} placeholder="foto" disabled={disabled} />
-        <Button title="Cadastro" size="large" disabled={disabled} />
+        {disabled ? <Loading size="large" /> : <Button title="Cadastro" size="large" disabled={disabled} />}
       </form>
       <Link to="/" >
         <h6>Já tem uma conta? Faça login!</h6>
