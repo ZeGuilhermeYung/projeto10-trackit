@@ -1,10 +1,14 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import UserContext from "../context/UserContext";
 import dayjs from "dayjs";
 import { getTodayHabits } from "../services/APIs";
 import { Icon } from "./common";
 
-
 function TodayHabit ( {id, name, done, currentSequence, highestSequence} ) {
+  const { setProgressHabits } = useContext(UserContext);
+  function checkDoneHabit () {
+
+  }
   return (
     <div id={id} >
       <div>
@@ -14,7 +18,7 @@ function TodayHabit ( {id, name, done, currentSequence, highestSequence} ) {
           <h6>Seu recorde: {highestSequence} dias</h6>
         </div>
       </div>
-      <Icon name="checkbox" size="large" />
+      <Icon name="checkbox" size="large" clickFunction={checkDoneHabit} />
     </div>
   );
 }
@@ -25,6 +29,7 @@ export default function Today () {
   const [todayHabits, setTodayHabits] = useState([]);
   const [statusHabits, setStatusHabits] = useState("");
   const [doneHabits, setDoneHabits] = useState([]);
+  const { progressHabits, setProgressHabits } = useContext(UserContext);
 
   useEffect(() => {
 		getTodayHabits()
@@ -32,7 +37,6 @@ export default function Today () {
         alert(error.message);
       })
       .then((habits) => {
-        console.log(habits);
         setTodayHabits(habits.data);
         setDoneHabits(habits.data.filter(habit => habit.done));
         setProgressHabits(Math.round((habits.data.filter(habit => habit.done).length / habits.data.length) * 100));
@@ -40,7 +44,6 @@ export default function Today () {
           setStatusHabits("Nenhum hábito concluído ainda")
           : setStatusHabits(`${progressHabits}% dos hábitos concluídos`);
       });
-      console.log(todayHabits);
     }, []);
 
   

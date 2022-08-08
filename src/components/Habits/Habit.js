@@ -39,7 +39,7 @@ export default function Habit ( {habitId, name, days, setDeleteHabit} ) {
       selected:false
     }
   ]);
-
+  
   useEffect(() => {
     const arrayaux = [...weekdayHabit];
     days.map(weekdayOrder => arrayaux[weekdayOrder].selected = true);

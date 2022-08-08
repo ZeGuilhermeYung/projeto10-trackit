@@ -1,28 +1,39 @@
-import { useState } from 'react';
+import { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import UserContext from "../../context/UserContext";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
+//import { easeQuadInOut } from "d3-ease";
+//import AnimatedProgressProvider from "./AnimatedProgressProvider";
+//import ChangingProgressProvider from "./ChangingProgressProvider";
 import styled from "styled-components";
 
-export default function Footer (  ) {
-  const [progressHabits, setProgressHabits] = useState(0);
+export default function Footer () {
+  const { progressHabits } = useContext(UserContext);
 
   return (
     <Bottom>
-      <h3>Hábitos</h3>
-      <div>
-        <CircularProgressbar
-          value={progressHabits}
-          text={"Hoje"}
-          background
-          backgroundPadding={6}
-          styles={buildStyles({
-            backgroundColor: "#52B6FF",
-            textColor: "#FFFFFF",
-            pathColor: "#FFFFFF",
-            trailColor: "transparent"
-          })} />
-      </div>
-      <h3>Histórico</h3>
+      <Link to="/habitos" >
+        <h3>Hábitos</h3>
+      </Link>
+      <Link to="/hoje" >
+        <div>
+          <CircularProgressbar
+            value={progressHabits}
+            text={"Hoje"}
+            background
+            backgroundPadding={6}
+            styles={buildStyles({
+              backgroundColor: "#52B6FF",
+              textColor: "#FFFFFF",
+              pathColor: "#FFFFFF",
+              trailColor: "transparent"
+            })} />
+        </div>
+      </Link> 
+      <Link to="/historico" >
+        <h3>Histórico</h3>
+      </Link> 
     </Bottom>
   );
 }

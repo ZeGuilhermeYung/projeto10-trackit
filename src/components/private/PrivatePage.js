@@ -5,18 +5,17 @@ import Footer from "./Footer";
 
 export default function PrivatePage({ children }) {
   const authData = JSON.parse(localStorage.getItem("userData"));
-
-  if (authData) {
-    return (
+  return (
+    <>
+    {authData ? 
       <Private>
         <Header name={authData.name} image={authData.image} />
           {children}
         <Footer />
       </Private>
-    )
-  } else {
-    return <Navigate to="/" />
-  }
+      : <Navigate to="/" />}
+    </>
+  );
 }
 
 const Private = styled.section`

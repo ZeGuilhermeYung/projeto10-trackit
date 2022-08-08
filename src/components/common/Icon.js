@@ -9,6 +9,8 @@ export default function Icon ( {name, size, clickFunction} ) {
 }
 
 const Wrapper = styled.div`
+width: auto;
+height: auto;
 cursor: pointer;
 ion-icon {
 font-size: ${props => (
