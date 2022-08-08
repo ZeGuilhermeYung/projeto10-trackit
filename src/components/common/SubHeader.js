@@ -1,8 +1,12 @@
+import { useContext } from "react";
+import UserContext from "../../context/UserContext";
 import styled from "styled-components";
 
 export default function SubHeader ( {children} ) {
+  const { progressHabits } = useContext(UserContext);
+
   return (
-    <Top>
+    <Top color={progressHabits} >
       {children}
     </Top>
   );
@@ -17,6 +21,11 @@ width: 100%;
   flex-direction: column;
   justify-content: center;
 }
+.today-header h3 {
+  color: ${props => (
+    (props.color > 0) ? "#8FC549"
+    : "#BABABA")};
+  }
 .habits-header {
   width: 100%;
   height: 77px;
