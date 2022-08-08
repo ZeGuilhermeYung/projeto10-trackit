@@ -6,6 +6,7 @@ import { AuthScreen, Button, Input, Loading } from "./common";
 
 export default function Register () {
   const navigate = useNavigate();
+  const userImage = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/768px-User-avatar.svg.png";
   const [disabled, setDisabled] = useState(false);
   const [form, setForm] = useState({
     email: "",
@@ -19,9 +20,14 @@ export default function Register () {
   }
 
   function handleSubmit (event) {
+    const objectaux = {...form};
+    if (form.image.length === 0) { 
+      objectaux.image = userImage;
+      setForm(objectaux);
+    }
     event.preventDefault();
     setDisabled(true);
-    registerUser(form)
+    registerUser(objectaux)
       .catch((error) => {
         alert(error.message);
         setDisabled(false);

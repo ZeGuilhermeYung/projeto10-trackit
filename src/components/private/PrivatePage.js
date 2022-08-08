@@ -19,7 +19,7 @@ export default function PrivatePage({ children }) {
 }
 
 const Private = styled.section`
-> section{
+> section {
   margin: 98px 18px 111px 18px;
 }
 main > div {

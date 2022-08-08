@@ -3,9 +3,6 @@ import { Link } from 'react-router-dom';
 import UserContext from "../../context/UserContext";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-//import { easeQuadInOut } from "d3-ease";
-//import AnimatedProgressProvider from "./AnimatedProgressProvider";
-//import ChangingProgressProvider from "./ChangingProgressProvider";
 import styled from "styled-components";
 
 export default function Footer () {
