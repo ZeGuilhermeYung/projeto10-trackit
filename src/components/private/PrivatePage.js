@@ -79,6 +79,7 @@ span {
 }
 span h5 {
   margin-right: 23px;
+  cursor: pointer;
 }
 main ul {
   display: flex;

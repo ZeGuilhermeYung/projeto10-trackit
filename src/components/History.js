@@ -1,11 +1,29 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Calendar from 'react-calendar';
 import { SubHeader } from "./common";
+import { getHistory } from '../services/APIs';
 import '../../node_modules/react-calendar/dist/Calendar.css';
 import styled from 'styled-components';
 
 export default function History () {
   const [value, onChange] = useState(new Date());
+
+  useEffect(() => {
+		getHistory()
+      .catch((error) => {
+        alert(error.message);
+      })
+      .then((history) => {
+        const historyDays = history.data.map(dayHistory => dayHistory.day);
+        const daysUndone = history.data.map(dayHistory => dayHistory.habits).map(element => element.filter(value => !value.done));
+        const arrayAux = [];
+        for (let i = 0; i < historyDays.length; i++) {
+          (daysUndone[i].length === 0) ?
+          arrayAux.push({day: historyDays[i], dayDone: true})
+          : arrayAux.push({day: historyDays[i], dayDone: false});
+        }
+      });
+    }, []);
 
   return (
     <section>
@@ -61,5 +79,8 @@ button.react-calendar__navigation__label {
 }
 .react-calendar__tile--active {
     background: #126BA5;
+}
+.react-calendar__tile.react-calendar__month-view__days__day.react-calendar__month-view__days__day--neighboringMonth {
+  color: #DBDBDB;
 }
 `
