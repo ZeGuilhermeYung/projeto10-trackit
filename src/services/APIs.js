@@ -46,4 +46,18 @@ function deleteHabit(habitId) {
   return promise;
 }
 
-export { userHeaders, loginUser, registerUser, getTodayHabits, getHabits, postNewHabit, deleteHabit }
+function checkHabit (habitId) {
+  const userToken = userHeaders();
+  const body = {};
+  const promise = axios.post(`${urlAPI}/habits/${habitId}/check`, body, userToken);
+  return promise;
+}
+
+function uncheckHabit (habitId) {
+  const userToken = userHeaders();
+  const body = {};
+  const promise = axios.post(`${urlAPI}/habits/${habitId}/uncheck`, body, userToken);
+  return promise;
+}
+
+export { userHeaders, loginUser, registerUser, getTodayHabits, getHabits, postNewHabit, deleteHabit, checkHabit, uncheckHabit }
