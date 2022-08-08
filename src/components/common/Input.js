@@ -1,11 +1,29 @@
+import { useState } from "react";
 import styled from "styled-components";
 
 export default function Input ( {type, name, onChange, value, placeholder, disabled} ) {
+  const [visible, setVisible] = useState("eye-off-outline");
+  const [visiblePassword, setVisiblePassword] = useState("password");
+
+  function showPassword () {
+    if (visible === "eye-off-outline") {
+      setVisible("eye-outline");
+      setVisiblePassword("text");
+    } else {
+      setVisible("eye-off-outline");
+      setVisiblePassword("password");
+    }
+  }
   return (
     <>
       {type === "url" ? 
       <Wrapper type={type} name={name} onChange={onChange} value={value} placeholder={placeholder} disabled={disabled} />
-      : 
+      : type === "password" ? 
+      <Div>
+        <Wrapper type={visiblePassword} name={name} onChange={onChange} value={value} placeholder={placeholder} disabled={disabled} required />
+        <ion-icon name={visible} onClick={showPassword} ></ion-icon>
+      </Div>
+      :
       <Wrapper type={type} name={name} onChange={onChange} value={value} placeholder={placeholder} disabled={disabled} required />
       }  
     </>
@@ -46,4 +64,17 @@ box-sizing: border-box;
 :disabled {
   color: #AFAFAF;
   background-color: #F2F2F2;
-}`;
+}
+`;
+const Div = styled.div`
+width: 100%;
+position: relative;
+
+ion-icon {
+  font-size: 30px;
+  color: #DBDBDB;
+  position: absolute;
+  bottom: 13px;
+  right: 15px;
+}
+`;
