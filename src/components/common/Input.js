@@ -18,7 +18,7 @@ export default function Input ( {type, name, onChange, value, placeholder, disab
     <>
       {type === "url" ? 
       <Wrapper type={type} name={name} onChange={onChange} value={value} placeholder={placeholder} disabled={disabled} />
-      : type === "password" ? 
+      : name === "password" ? 
       <Div>
         <Wrapper type={visiblePassword} name={name} onChange={onChange} value={value} placeholder={placeholder} disabled={disabled} required />
         <ion-icon name={visible} onClick={showPassword} ></ion-icon>

@@ -60,4 +60,10 @@ function uncheckHabit (habitId) {
   return promise;
 }
 
-export { userHeaders, loginUser, registerUser, getTodayHabits, getHabits, postNewHabit, deleteHabit, checkHabit, uncheckHabit }
+function getHistory() {
+  const userToken = userHeaders();
+  const promise = axios.get(`${urlAPI}/habits/history/daily`, userToken);
+  return promise;
+}
+
+export { userHeaders, loginUser, registerUser, getTodayHabits, getHabits, postNewHabit, deleteHabit, checkHabit, uncheckHabit, getHistory }
