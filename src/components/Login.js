@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { loginUser } from "../services/APIs.js";
 import logo from "../assets/img/trackit-logo.png";
-import { AuthScreen, Button, Loading } from "./common";
+import { AuthScreen, Button, Input, Loading } from "./common";
 
 export default function Login () {
   const navigate = useNavigate();
@@ -40,8 +40,8 @@ export default function Login () {
         : <AuthScreen>
             <img src={logo} alt="logo do Track It" />
             <form onSubmit={handleSubmit} >
-              <input type="email" name="email" onChange={handleInput} value={form.email} placeholder="email" disabled={disabled} required />
-              <input type="password" name="password" onChange={handleInput} value={form.password} placeholder="senha" disabled={disabled} required />
+              <Input type="email" name="email" onChange={handleInput} value={form.email} placeholder="email" disabled={disabled} />
+              <Input type="password" name="password" onChange={handleInput} value={form.password} placeholder="senha" disabled={disabled} />
               {disabled ? <Loading size="large" /> : <Button title="Entrar" size="large" disabled={disabled} />}
             </form>
             <Link to="/cadastro" >

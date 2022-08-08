@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getHabits, postNewHabit } from "../../services/APIs";
-import { Button, Loading, SelectDay } from "../common";
+import { Button, Input, Loading, SelectDay } from "../common";
 import Habit from "./Habit";
 
 function Weekday ( {weekdayNum, name, weekdays, setWeekdays} ) {
@@ -56,21 +56,21 @@ export default function Habits () {
       alert("Selecione pelo menos um dia da semana");
     } else {
       setDisabled(true);
-    const newHabit = {
-      name: newHabitName,
-      days: weekdays
-    }
-    postNewHabit(newHabit)
-      .catch((error) => {
-        alert(error.message);
-        setDisabled(false);
-      })
-      .then(() => {
-        setAddHabit(false);
-        setDisabled(false);
-        setNewHabitName("");
-        setWeekdays([]);
-      });
+      const newHabit = {
+        name: newHabitName,
+        days: weekdays
+      }
+      postNewHabit(newHabit)
+        .catch((error) => {
+          alert(error.message);
+          setDisabled(false);
+        })
+        .then(() => {
+          setAddHabit(false);
+          setDisabled(false);
+          setNewHabitName("");
+          setWeekdays([]);
+        });
     }
   }
 
@@ -83,19 +83,23 @@ export default function Habits () {
       <main>
         {addHabit ?
           <form onSubmit={handleSubmit} >
-            <input type="text" name="newHabit" onChange={(event) => {setNewHabitName(event.target.value)}} value={newHabitName} required/>
-            <ul>
-              {["D","S","T","Q","Q","S","S"].map((weekday, index) =>
-                <Weekday
-                  key={index}
-                  weekdayNum={index}
-                  name={weekday}
-                  weekdays={weekdays}
-                  setWeekdays={setWeekdays} />
-              )}
-            </ul>
-            <h6 onClick={() => (setAddHabit(false))}>Cancelar</h6>
-            {disabled ? <Loading size="small" /> : <Button title="Salvar" size="small" disabled={disabled} />}
+            <div>
+              <Input type="text" name="newHabit" placeholder="nome do hábito" onChange={(event) => {setNewHabitName(event.target.value)}} value={newHabitName} disabled={disabled} />
+              <ul>
+                {["D","S","T","Q","Q","S","S"].map((weekday, index) =>
+                  <Weekday
+                    key={index}
+                    weekdayNum={index}
+                    name={weekday}
+                    weekdays={weekdays}
+                    setWeekdays={setWeekdays} />
+                )}
+              </ul>
+            </div>
+            <span>
+              <h5 onClick={() => (setAddHabit(false))}>Cancelar</h5>
+              {disabled ? <Loading size="small" /> : <Button title="Salvar" size="small" disabled={disabled} />}
+            </span>
           </form>
           : null}
         {alertHabits}

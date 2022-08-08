@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { registerUser } from "../services/APIs.js";
 import logo from "../assets/img/trackit-logo.png";
-import { AuthScreen, Button, Loading } from "./common";
+import { AuthScreen, Button, Input, Loading } from "./common";
 
 export default function Register () {
   const navigate = useNavigate();
@@ -35,10 +35,10 @@ export default function Register () {
     <AuthScreen>
       <img src={logo} alt="logo do Track It" />
       <form onSubmit={handleSubmit} >
-        <input type="email" name="email" onChange={handleInput} value={form.email} placeholder="email" disabled={disabled} required />
-        <input type="password" name="password" onChange={handleInput} value={form.password} placeholder="senha" disabled={disabled} required />
-        <input type="text" name="name" onChange={handleInput} value={form.name} placeholder="nome" disabled={disabled} required />
-        <input type="url" name="image" onChange={handleInput} value={form.image} placeholder="foto" disabled={disabled} />
+        <Input type="email" name="email" onChange={handleInput} value={form.email} placeholder="email" disabled={disabled} />
+        <Input type="password" name="password" onChange={handleInput} value={form.password} placeholder="senha" disabled={disabled} />
+        <Input type="text" name="name" onChange={handleInput} value={form.name} placeholder="nome" disabled={disabled} />
+        <Input type="url" name="image" onChange={handleInput} value={form.image} placeholder="foto" disabled={disabled} />
         {disabled ? <Loading size="large" /> : <Button title="Cadastro" size="large" disabled={disabled} />}
       </form>
       <Link to="/" >

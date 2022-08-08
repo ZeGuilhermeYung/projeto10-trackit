@@ -21,7 +21,6 @@ function TodayHabit ( {habitId, name, done, currentSequence, highestSequence, se
     .then(() => {
       setChangeChecked(true);
     });
-    console.log(done);
   }
   return (
     <div id={habitId} >
@@ -55,7 +54,6 @@ export default function Today () {
         setTodayHabits(habits.data);
         setDoneHabits(habits.data.filter(habit => habit.done));
         setChangeChecked(false);
-        console.log(doneHabits);
         setProgressHabits(Math.round((habits.data.filter(habit => habit.done).length / habits.data.length) * 100));
         doneHabits.length === 0 ?
           setStatusHabits("Nenhum hábito concluído ainda")

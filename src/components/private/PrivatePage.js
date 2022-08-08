@@ -40,6 +40,26 @@ main > div > div {
   flex-direction: column;
   justify-content: space-between;
 }
+form {
+  width: 100%;
+  height: 180px;
+  background-color: #FFFFFF;
+  border-radius: 5px;
+  padding: 18px 18px 15px 18px;
+  margin-bottom: 29px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+span {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+span h5 {
+  margin-right: 23px;
+}
 main ul {
   display: flex;
 }
