@@ -1,10 +1,25 @@
+import { useContext, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import styled from "styled-components";
 import Header from "./Header";
 import Footer from "./Footer";
+import UserContext from "../../context/UserContext";
+import { getTodayHabits } from "../../services/APIs";
 
 export default function PrivatePage({ children }) {
   const authData = JSON.parse(localStorage.getItem("userData"));
+  const { progressHabits, setProgressHabits } = useContext(UserContext);
+
+  useEffect(() => {
+		getTodayHabits()
+      .catch((error) => {
+        alert(error.message);
+      })
+      .then((habits) => {
+        setProgressHabits(Math.round((habits.data.filter(habit => habit.done).length / habits.data.length) * 100));
+      });
+    }, [progressHabits]);
+
   return (
     <>
     {authData ? 

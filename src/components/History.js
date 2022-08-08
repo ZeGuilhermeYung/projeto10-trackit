@@ -24,6 +24,10 @@ export default function History () {
 }
 
 const Div = styled.div`
+font-family: 'Lexend Deca', sans-serif;
+font-style: normal;
+font-weight: 400;
+color: #666666;
 .react-calendar {
   width: 100%;
   height: 100%;
@@ -48,6 +52,12 @@ button.react-calendar__navigation__label {
   align-items: center;
   justify-content: center;
   text-align: center;
+}
+.react-calendar__viewContainer {
+  height: 300px;
+}
+.react-calendar__month-view__weekdays__weekday {
+  color: #000000;
 }
 .react-calendar__tile--active {
     background: #126BA5;

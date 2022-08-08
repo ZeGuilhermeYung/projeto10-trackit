@@ -1,23 +1,28 @@
+import { useState } from "react";
 import { checkHabit, uncheckHabit } from "../../services/APIs";
 import { Icon } from "../common";
 import styled from "styled-components";
 
-export default function TodayHabit ( {habitId, name, done, currentSequence, highestSequence, setChangeChecked} ) {
+export default function TodayHabit ( {habitId, name, done, currentSequence, highestSequence, changeChecked, setChangeChecked} ) {
+  const [disabled, setDisabled] = useState(false);
 
   function checkDoneHabit () {
+    setDisabled(true);
     !done ?  checkHabit(habitId)
     .catch((error) => {
       alert(error.message);
     })
     .then(() => {
-      setChangeChecked(true);
+      setChangeChecked(!changeChecked);
+      setDisabled(false);
     })
     : uncheckHabit(habitId)
     .catch((error) => {
         alert(error.message);
     })
     .then(() => {
-      setChangeChecked(true);
+      setChangeChecked(!changeChecked);
+      setDisabled(false);
     });
   }
   return (
@@ -41,7 +46,9 @@ export default function TodayHabit ( {habitId, name, done, currentSequence, high
           </h6>
         </div>
       </div>
-      <Icon name="checkbox" size="large" done={done} clickFunction={checkDoneHabit} />
+      <button disabled={disabled} >
+        <Icon name="checkbox" size="large" done={done} clickFunction={checkDoneHabit} />
+      </button>
     </Div>
   );
 }

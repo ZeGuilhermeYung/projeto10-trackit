@@ -11,7 +11,6 @@ export default function Today () {
 
   const [todayHabits, setTodayHabits] = useState([]);
   const [statusHabits, setStatusHabits] = useState("");
-  const [doneHabits, setDoneHabits] = useState([]);
   const [changeChecked, setChangeChecked] = useState(false);
   const { progressHabits, setProgressHabits } = useContext(UserContext);
 
@@ -22,10 +21,8 @@ export default function Today () {
       })
       .then((habits) => {
         setTodayHabits(habits.data);
-        setDoneHabits(habits.data.filter(habit => habit.done));
-        setChangeChecked(false);
         setProgressHabits(Math.round((habits.data.filter(habit => habit.done).length / habits.data.length) * 100));
-        doneHabits.length === 0 ?
+        habits.data.filter(habit => habit.done).length === 0 ?
           setStatusHabits("Nenhum hábito concluído ainda")
           : setStatusHabits(`${progressHabits}% dos hábitos concluídos`);
       });
@@ -50,6 +47,7 @@ export default function Today () {
             done={habit.done}
             currentSequence={habit.currentSequence}
             highestSequence={habit.highestSequence}
+            changeChecked={changeChecked} 
             setChangeChecked={setChangeChecked} />)}
       </main>
     </section>
