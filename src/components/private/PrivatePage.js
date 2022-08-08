@@ -40,6 +40,11 @@ main > div > div {
   flex-direction: column;
   justify-content: space-between;
 }
+.calendar {
+  width: 100%;
+  height: 402px;
+  padding: 0;
+}
 form {
   width: 100%;
   height: 180px;

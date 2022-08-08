@@ -7,6 +7,7 @@ import PrivatePage from "./private/PrivatePage";
 import Register from "./Register";
 import Today from "./Today/Today";
 import Habits from "./Habits/Habits";
+import History from "./History";
 
 export default function App () {
   const [progressHabits, setProgressHabits] = useState(0);
@@ -33,7 +34,13 @@ export default function App () {
                   <Habits />
                 </PrivatePage>
               } />
-            {/* <Route path="/historico" element={<History />} /> */}
+              <Route
+              path="/historico"
+              element={
+                <PrivatePage>
+                  <History />
+                </PrivatePage>
+              } />
           </Routes>
         </UserContext.Provider>
       </BrowserRouter>
