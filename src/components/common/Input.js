@@ -76,5 +76,4 @@ ion-icon {
   position: absolute;
   bottom: 13px;
   right: 15px;
-}
-`;
+}`;

@@ -28,7 +28,8 @@ z-index: 5;
 box-sizing: border-box;
 
 div {
-  width: 100px;
+  width: auto;
+  height: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -40,6 +41,13 @@ div img {
   object-fit: cover;
 }
 div h6 {
+  width: auto;
+  height: auto;
+  max-width: 200px;
+  max-height: 50px;
   color: #FFFFFF;
   text-align: center;
+  margin-right: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }`;
