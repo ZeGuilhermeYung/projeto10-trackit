@@ -5,7 +5,6 @@ import { getTodayHabits } from "../../services/APIs";
 import TodayHabit from "./TodayHabit";
 import { SubHeader } from "../common";
 
-
 export default function Today () {
   require("dayjs/locale/pt-br");
 
@@ -28,7 +27,6 @@ export default function Today () {
       });
     }, [progressHabits, changeChecked]);
 
-  
   return (
     <section>
       <SubHeader>

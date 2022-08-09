@@ -26,7 +26,7 @@ export default function TodayHabit ( {habitId, name, done, currentSequence, high
     });
   }
   return (
-    <Div id={habitId} actualDone={done} current={currentSequence} record={highestSequence} >
+    <Div id={habitId} actualDone={done} current={currentSequence} record={highestSequence} onClick={checkDoneHabit} >
       <div>
         <h4>{name}</h4>
         <div>
@@ -47,13 +47,14 @@ export default function TodayHabit ( {habitId, name, done, currentSequence, high
         </div>
       </div>
       <button disabled={disabled} >
-        <Icon name="checkbox" size="large" done={done} clickFunction={checkDoneHabit} />
+        <Icon name="checkbox" size="large" done={done} />
       </button>
     </Div>
   );
 }
 
 const Div = styled.div`
+cursor: pointer;
 .actual em {
   color: ${props => (
     (props.actualDone) ? "#8FC549"
