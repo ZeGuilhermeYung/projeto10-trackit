@@ -57,7 +57,7 @@ main > div > div {
 }
 .calendar {
   width: 100%;
-  height: 402px;
+  height: 250px;
   padding: 0;
 }
 form {
