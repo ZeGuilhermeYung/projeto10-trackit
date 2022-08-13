@@ -16,11 +16,13 @@ box-sizing: border-box;
 ion-icon {
 font-size: ${props => (
   (props.size === "large") ? "69px"
+  : (props.size === "medium") ? "35px"
   : "15px"
 )};
 color: ${props => (
-  (props.size === "large" && props.done) ? "#8FC549"
-  : (props.size === "large") ? "#EBEBEB"
+  ((props.size === "large" || props.size === "medium") && props.done) ? "#8FC549"
+  : (props.size === "medium" && !props.done) ? "#E75766"
+  : (props.size === "large" && !props.done) ? "#EBEBEB"
   : "#666666"
 )};
 }

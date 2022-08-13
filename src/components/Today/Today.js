@@ -6,7 +6,6 @@ import TodayHabit from "./TodayHabit";
 import { SubHeader } from "../common";
 
 export default function Today () {
-  require("dayjs/locale/pt-br");
 
   const [todayHabits, setTodayHabits] = useState([]);
   const [statusHabits, setStatusHabits] = useState("");

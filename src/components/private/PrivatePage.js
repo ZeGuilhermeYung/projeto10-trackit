@@ -7,6 +7,7 @@ import UserContext from "../../context/UserContext";
 import { getTodayHabits } from "../../services/APIs";
 
 export default function PrivatePage({ children }) {
+  require("dayjs/locale/pt-br");
   const authData = JSON.parse(localStorage.getItem("userData"));
   const { progressHabits, setProgressHabits } = useContext(UserContext);
 

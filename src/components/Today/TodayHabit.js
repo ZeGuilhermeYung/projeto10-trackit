@@ -40,8 +40,8 @@ export default function TodayHabit ( {habitId, name, done, currentSequence, high
           <h6 className="record" >Seu recorde: <em>{
           highestSequence === 0 ? "Nenhum dia"
           : highestSequence} {
-          highestSequence === 0 ? "" :
-          highestSequence === 1 ? "dia"
+          highestSequence === 0 ? ""
+          : highestSequence === 1 ? "dia"
           : "dias"}</em>
           </h6>
         </div>
